@@ -102,12 +102,21 @@
       </div>
     </div>
     <!-- end modal -->
+
+    <!-- confirm -->
+    <modal-confirm></modal-confirm>
+    <!-- end confirm -->
   </div>
 </template>
 
 <script>
+import ModalConfirm from './ModalConfirm.vue';
+
 export default {
   name: "ComponentA",
+  components:{
+    ModalConfirm
+  },
   watch: {
     $route: {
       immediate: true,
