@@ -87,6 +87,13 @@
                 >
                   Delete
                 </button>
+                <button
+                  type="button"
+                  class="btn btn-link link-danger"
+                  v-on:click="confirmDeleteItem()"
+                >
+                  Confirm Delete
+                </button>
               </div>
             </td>
           </tr>
@@ -104,7 +111,7 @@
     <!-- end modal -->
 
     <!-- confirm -->
-    <modal-confirm></modal-confirm>
+    <modal-confirm v-if="showConfirmDelete"></modal-confirm>
     <!-- end confirm -->
   </div>
 </template>
@@ -129,6 +136,7 @@ export default {
     return {
       records: this.$db,
       showModal: false,
+      showConfirmDelete: false
     };
   },
   methods: {
@@ -140,6 +148,9 @@ export default {
         this.$db.splice(indexToRemove, 1);
       }
     },
+    confirmDeleteItem(){
+      this.showConfirmDelete = true;
+    }
   },
 };
 </script>
