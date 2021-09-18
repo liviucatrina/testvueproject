@@ -19,7 +19,7 @@
 </template>
 
 <script>
-export default ModalConfirm({
+export default ({
   name: "ModalConfirm",
 });
 </script>
