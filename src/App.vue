@@ -20,4 +20,14 @@ html, body{
 #app{
   height: 100%;
 }
+
+.app-backdrop{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: lightgray;
+  opacity: 0.5;
+}
 </style>

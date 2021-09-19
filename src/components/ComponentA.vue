@@ -46,7 +46,7 @@
                 </div>
               </div>
             </td>
-            <td class="align-middle" style="width: 20%">
+            <td class="align-middle" style="width: 30%">
               <div class="d-flex justify-content-center">
                 <router-link
                   :to="{
@@ -103,7 +103,7 @@
 
     <!-- modal -->
     <div v-if="showModal">
-      <div class="modal-route"></div>
+      <div class="app-backdrop"></div>
       <div id="item-modal-content" class="shadow">
         <router-view></router-view>
       </div>
@@ -176,16 +176,6 @@ export default {
 </script>
 
 <style scoped>
-.modal-route {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: lightgray;
-  opacity: 0.5;
-}
-
 #item-modal-content {
   width: 50%;
   position: absolute;
