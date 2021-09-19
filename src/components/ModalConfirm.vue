@@ -2,11 +2,7 @@
   <div>
     <div class="app-backdrop"></div>
     <div
-      class="modal"
-      v-bind:class="{
-        'd-none': confirmVisible == false,
-        'd-inline': confirmVisible == true,
-      }"
+      class="modal d-inline"
       id="confirmModal"
       tabindex="-1"
       aria-labelledby="confirmModalLabel"
@@ -56,14 +52,6 @@
 export default {
   name: "ModalConfirm",
   props: ["confirmTitle", "confirmContent", "confirmItemId"],
-  data: function () {
-    return {
-      confirmVisible: false,
-    };
-  },
-  mounted() {
-    this.confirmVisible = true;
-  },
   methods: {
     closeConfirmModal(result) {
       this.confirmVisible = false;

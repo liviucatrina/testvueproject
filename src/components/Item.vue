@@ -89,26 +89,6 @@ export default {
       item: {},
     };
   },
-  mountedOld() {
-    const vm = this;
-    console.log(vm.$router.currentRoute);
-    console.log(vm);
-
-    var itemId = "";
-    if (vm.itemId.indexOf(";view") !== -1) {
-      itemId = vm.itemId.replace(";view", "");
-      this.mode = "view";
-    } else {
-      itemId = vm.itemId;
-      if (itemId !== "") this.mode = "edit";
-      else this.mode = "add";
-    }
-
-    if (this.mode != "add") {
-      var dbItem = vm.records.find((p) => p.code === itemId);
-      vm.item = JSON.parse(JSON.stringify(dbItem));
-    }
-  },
   mounted() {
     const vm = this;
 
