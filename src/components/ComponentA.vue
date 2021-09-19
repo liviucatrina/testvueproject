@@ -160,7 +160,7 @@ export default {
     confirmDeleteItem(itemCode) {
       this.confirmTitle = "Delete item";
       this.confirmContent =
-        "Are you sure you want to delete item with code " + itemCode + "?";
+        "<p>Are you sure you want to delete item with code <strong>" + itemCode + "</strong>?</p>";
       this.itemCodeToDelete = itemCode;
       this.showConfirmDelete = true;
     },

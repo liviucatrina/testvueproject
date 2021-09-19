@@ -23,7 +23,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            {{ confirmContent }}
+            <div v-html="confirmContent"></div>
           </div>
           <div class="modal-footer">
             <button
