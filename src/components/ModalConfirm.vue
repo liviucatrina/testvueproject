@@ -1,25 +1,63 @@
 <template>
-    <div class="modal d-inline" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-        <div class="modal-dialog shadow">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
+  <div
+    class="modal"
+    v-bind:class="{
+      'd-none': confirmVisible == false,
+      'd-inline': confirmVisible == true,
+    }"
+    id="confirmModal"
+    tabindex="-1"
+    aria-labelledby="confirmModalLabel"
+    aria-hidden="false"
+  >
+    <div class="modal-dialog shadow">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">{{ confirmTitle }}</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            @click="closeConfirmModal(null, null)"
+          ></button>
         </div>
+        <div class="modal-body">
+          {{ confirmContent }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" @click="closeConfirmModal('ok', confirmItemId)">OK</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            @click="closeConfirmModal('cancel', null)"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-export default ({
+export default {
   name: "ModalConfirm",
-});
+  props: ["confirmTitle", "confirmContent", "confirmItemId"],
+  data: function () {
+    return {
+      confirmVisible: false,
+    };
+  },
+  mounted() {
+    this.confirmVisible = true;
+  },
+  methods: {
+    closeConfirmModal(result) {
+      this.confirmVisible = false;
+      this.$emit("closeConfirmModalEvent", result, this.confirmItemId);
+    },
+  },
+};
 </script>

@@ -90,9 +90,9 @@
                 <button
                   type="button"
                   class="btn btn-link link-danger"
-                  v-on:click="confirmDeleteItem()"
+                  v-on:click="confirmDeleteItem(`${item.code}`)"
                 >
-                  Confirm Delete
+                  Delete bs-m
                 </button>
               </div>
             </td>
@@ -111,18 +111,24 @@
     <!-- end modal -->
 
     <!-- confirm -->
-    <modal-confirm v-if="showConfirmDelete"></modal-confirm>
+    <modal-confirm
+      v-if="showConfirmDelete"
+      v-bind:confirm-title="confirmTitle"
+      v-bind:confirm-content="confirmContent"
+      v-bind:confirm-item-id="itemCodeToDelete"
+      @closeConfirmModalEvent="closeConfirmModalEvent"
+    ></modal-confirm>
     <!-- end confirm -->
   </div>
 </template>
 
 <script>
-import ModalConfirm from './ModalConfirm.vue';
+import ModalConfirm from "./ModalConfirm.vue";
 
 export default {
   name: "ComponentA",
-  components:{
-    ModalConfirm
+  components: {
+    ModalConfirm,
   },
   watch: {
     $route: {
@@ -136,7 +142,10 @@ export default {
     return {
       records: this.$db,
       showModal: false,
-      showConfirmDelete: false
+      showConfirmDelete: false,
+      itemCodeToDelete: null,
+      confirmTitle: 'Please confirm',
+      confirmContent: 'Are you sure?'
     };
   },
   methods: {
@@ -148,9 +157,20 @@ export default {
         this.$db.splice(indexToRemove, 1);
       }
     },
-    confirmDeleteItem(){
+    confirmDeleteItem(itemCode) {
+      this.confirmTitle = "Delete item";
+      this.confirmContent =
+        "Are you sure you want to delete item with code " + itemCode + "?";
+      this.itemCodeToDelete = itemCode;
       this.showConfirmDelete = true;
-    }
+    },
+    closeConfirmModalEvent(result, itemCode) {
+      this.showConfirmDelete = false;
+      if (result === "ok") {
+        var indexToRemove = this.$db.findIndex((p) => p.code === itemCode);
+        this.$db.splice(indexToRemove, 1);
+      }
+    },
   },
 };
 </script>
