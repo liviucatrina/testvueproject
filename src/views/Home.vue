@@ -5,6 +5,9 @@
       <p class="text-muted">
         This is a static text loaded from Home component
       </p>
+      <p class="text-muted">
+        Jenkins/Docker flow test
+      </p>
     </div>
   </div>
 </template>
