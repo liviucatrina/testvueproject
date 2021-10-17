@@ -1,5 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-    <h1>This is an about page</h1>
+    <h1>Test Vue JS</h1>
+    <p>Test Jenkins/Docker flow</p>
   </div>
 </template>
