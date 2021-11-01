@@ -7,6 +7,9 @@
       <router-link to="/componentb" custom v-slot="{ navigate }">
         <button type="button" @click="navigate" class="btn btn-secondary m-1">Comp B</button>
       </router-link>
+      <router-link to="/componentc" custom v-slot="{ navigate }">
+        <button type="button" @click="navigate" class="btn btn-secondary m-1">Comp C</button>
+      </router-link>
       <router-link to="/about" custom v-slot="{ navigate }">
         <button type="button" @click="navigate" class="btn btn-secondary m-1">About</button>
       </router-link>

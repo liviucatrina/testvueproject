@@ -6,6 +6,7 @@ import ComponentA from '../components/ComponentA'
 import ComponentB from '../components/ComponentB'
 import ComponentB1 from '../components/ComponentB1'
 import ComponentB2 from '../components/ComponentB2'
+import ComponentC from '../components/ComponentC'
 import Item from '../components/Item'
 
 Vue.use(VueRouter)
@@ -71,6 +72,11 @@ const routes = [
         component: ComponentB2,
       }
     ]
+  },
+  {
+    path: '/componentc',
+    name: 'ComponentC',
+    component: ComponentC
   }
 ]
 
